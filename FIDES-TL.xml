@@ -4,20 +4,21 @@
 
   Notes:
   - ServiceDigitalIdentity (SDI) uses DID-only for demo purposes:
-      <ServiceDigitalIdentity><DigitalId><Other><URI>did:web:…</URI></Other></DigitalId></ServiceDigitalIdentity>
+      <ServiceDigitalIdentity><DigitalId><Other><URI>did:web:...</URI></Other></DigitalId></ServiceDigitalIdentity>
     This is an experimental choice to demonstrate DID binding. For maximum interoperability with TLv6 consumers,
     consider publishing a PKI-anchored variant (SDI=X.509) alongside this sandbox list.
   - Sign this XML with XAdES enveloped signature (ds:Signature) using the FIDES (test) eSeal for the Scheme Operator.
 -->
 <TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
-                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                        TSLTag="http://uri.etsi.org/19612/TSLTag">
   <SchemeInformation>
     <TSLVersionIdentifier>5</TSLVersionIdentifier>
     <TSLSequenceNumber>1</TSLSequenceNumber>
     <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
     <SchemeOperatorName>
-      <Name xml:lang="nl">FIDES Labs – FIDES Sandbox Trusted List (TLv6)</Name>
-      <Name xml:lang="en">FIDES Labs – FIDES Sandbox Trusted List (TLv6)</Name>
+      <Name xml:lang="nl">FIDES Labs - FIDES Sandbox Trusted List (TLv6)</Name>
+      <Name xml:lang="en">FIDES Labs - FIDES Sandbox Trusted List (TLv6)</Name>
     </SchemeOperatorName>
     <SchemeOperatorAddress>
       <PostalAddresses>
@@ -30,47 +31,61 @@
         </PostalAddress>
       </PostalAddresses>
       <ElectronicAddress>
-        <URI>mailto:info@fides.community</URI>
+        <URI xml:lang="em">mailto:info@fides.community</URI>
       </ElectronicAddress>
     </SchemeOperatorAddress>
     <SchemeName>
       <Name xml:lang="en">FIDES Sandbox Trust List</Name>
     </SchemeName>
+
     <SchemeInformationURI>
-      <URI>https://github.com/FIDEScommunity/fides-trust-list</URI>
+      <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list</URI>
     </SchemeInformationURI>
     <StatusDeterminationApproach>http://uri.etsi.org/TrstSvc/TrustedList/TrustedListStatusDetermination/Approach/assessment</StatusDeterminationApproach>
     <SchemeTypeCommunityRules>
-      <URI>https://github.com/FIDEScommunity/fides-trust-list#schemerules</URI>
+      <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list#schemerules</URI>
     </SchemeTypeCommunityRules>
-    <PolicyOrLegalNotice>
-      <TSLPolicy>https://github.com/FIDEScommunity/fides-trust-list#policy</TSLPolicy>
-    </PolicyOrLegalNotice>
-    <DistributionPoints>
-      <URI>https://github.com/FIDEScommunity/fides-trust-list/FIDES-TL.xml</URI>
-      <URI>https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml</URI>
-    </DistributionPoints>
     <SchemeTerritory>NL</SchemeTerritory>
+    <PolicyOrLegalNotice>
+      <TSLPolicy xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list#policy</TSLPolicy>
+    </PolicyOrLegalNotice>
+    <HistoricalInformationPeriod>65535</HistoricalInformationPeriod>
     <ListIssueDateTime>2025-10-21T05:36:11Z</ListIssueDateTime>
     <NextUpdate>
       <dateTime>2025-11-20T05:36:11Z</dateTime>
     </NextUpdate>
+    <DistributionPoints>
+      <URI>https://github.com/FIDEScommunity/fides-trust-list/FIDES-TL.xml</URI>
+      <URI>https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml</URI>
+    </DistributionPoints>
   </SchemeInformation>
 
   <TrustServiceProviderList>
     <TrustServiceProvider>
       <TSPInformation>
         <TSPName>
-          <Name xml:lang="en">MijnOverheidIssuer (Sandbox – Credenco)</Name>
+          <Name xml:lang="en">MijnOverheidIssuer (Sandbox - Credenco)</Name>
         </TSPName>
-        <TSPInformationURI>
-          <URI>https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer</URI>
-        </TSPInformationURI>
+        <TSPTradeName>
+          <Name xml:lang="en">MijnOverheidIssuer (Sandbox - Credenco)</Name>
+        </TSPTradeName>
         <TSPAddress>
+          <PostalAddresses>
+            <PostalAddress xml:lang="en">
+              <StreetAddress>Vredenburg 40</StreetAddress>
+              <Locality>Utrecht</Locality>
+              <StateOrProvince>Utrecht</StateOrProvince>
+              <PostalCode>3511 BD</PostalCode>
+              <CountryName>NL</CountryName>
+            </PostalAddress>
+          </PostalAddresses>
           <ElectronicAddress>
-            <URI>https://wallet.acc.credenco.com/</URI>
+            <URI xml:lang="en">https://wallet.acc.credenco.com/</URI>
           </ElectronicAddress>
         </TSPAddress>
+        <TSPInformationURI>
+          <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer</URI>
+        </TSPInformationURI>
       </TSPInformation>
 
       <TSPServices>
@@ -85,24 +100,24 @@
             <ServiceDigitalIdentity>
               <DigitalId>
                 <Other>
-                  <URI>did:web:wallet.acc.credenco.com:public:did:31da4d04-c879-4d1d-bf3b-54f003882b22</URI>
+                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:did:31da4d04-c879-4d1d-bf3b-54f003882b22</URI>
                 </Other>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
             <ServiceInformationExtensions>
-              <Extension>
+              <Extension Critical="true">
                 <AdditionalServiceInformation>
-                  <URI>http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
+                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
                 </AdditionalServiceInformation>
                 <!-- Link to the issuer metadata and credential key (informative) -->
                 <AdditionalServiceInformation>
-                  <URI>https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#VerifiedContactCredential</URI>
+                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#VerifiedContactCredential</URI>
                 </AdditionalServiceInformation>
                 <!-- Optional semantic identifier for the VCT -->
                 <AdditionalServiceInformation>
-                  <URI>urn:vct:VerifiedContactCredential</URI>
+                  <URI xml:lang="en">urn:vct:VerifiedContactCredential</URI>
                 </AdditionalServiceInformation>
               </Extension>
             </ServiceInformationExtensions>
@@ -116,25 +131,25 @@
             <ServiceName>
               <Name xml:lang="en">Issuance of VC/EAA: BRPAddressCredential</Name>
             </ServiceName>
-                        <ServiceDigitalIdentity>
+            <ServiceDigitalIdentity>
               <DigitalId>
                 <Other>
-                  <URI>did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
+                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
                 </Other>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
             <ServiceInformationExtensions>
-              <Extension>
+              <Extension Critical="true">
                 <AdditionalServiceInformation>
-                  <URI>http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
+                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
                 </AdditionalServiceInformation>
                 <AdditionalServiceInformation>
-                  <URI>https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRPAddressCredential</URI>
+                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRPAddressCredential</URI>
                 </AdditionalServiceInformation>
                 <AdditionalServiceInformation>
-                  <URI>urn:vct:BRPAddressCredential</URI>
+                  <URI xml:lang="en">urn:vct:BRPAddressCredential</URI>
                 </AdditionalServiceInformation>
               </Extension>
             </ServiceInformationExtensions>
@@ -148,25 +163,25 @@
             <ServiceName>
               <Name xml:lang="en">Issuance of VC/EAA: BRIIncomeCredential</Name>
             </ServiceName>
-                        <ServiceDigitalIdentity>
+            <ServiceDigitalIdentity>
               <DigitalId>
                 <Other>
-                  <URI>did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
+                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
                 </Other>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
             <ServiceInformationExtensions>
-              <Extension>
+              <Extension Critical="true">
                 <AdditionalServiceInformation>
-                  <URI>http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
+                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
                 </AdditionalServiceInformation>
                 <AdditionalServiceInformation>
-                  <URI>https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRIIncomeCredential</URI>
+                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRIIncomeCredential</URI>
                 </AdditionalServiceInformation>
                 <AdditionalServiceInformation>
-                  <URI>urn:vct:BRIIncomeCredential</URI>
+                  <URI xml:lang="en">urn:vct:BRIIncomeCredential</URI>
                 </AdditionalServiceInformation>
               </Extension>
             </ServiceInformationExtensions>
