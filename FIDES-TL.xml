@@ -13,7 +13,7 @@
                         xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
                         TSLTag="http://uri.etsi.org/19612/TSLTag">
   <SchemeInformation>
-    <TSLVersionIdentifier>5</TSLVersionIdentifier>
+    <TSLVersionIdentifier>6</TSLVersionIdentifier>
     <TSLSequenceNumber>1</TSLSequenceNumber>
     <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
     <SchemeOperatorName>
