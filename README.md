@@ -116,6 +116,7 @@ Open a **Pull Request** with the following minimum information:
 
 Unless stated otherwise, content in this repo is provided under the **Apache-2.0** license.
 
+---
 
 ## 🧭 Scheme Rules
 
