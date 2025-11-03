@@ -457,7 +457,7 @@
             <ServiceDigitalIdentity>
               <DigitalId>
                 <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
+                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:did:24b7fc6e-7bea-4519-a23e-63c4e5a0b21e</URI>
                 </Other>
               </DigitalId>
             </ServiceDigitalIdentity>
