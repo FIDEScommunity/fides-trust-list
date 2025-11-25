@@ -1,29 +1,36 @@
-# FIDES Sandbox Trusted List (TLv6)
+# FIDES Sandbox Trust Lists (LOTL & TL, TLv6)
 
-> **Status:** Sandbox / demo • **Spec:** ETSI TS 119 612 (TLv6) • **Last updated:** 2025-10-23
+> **Status:** Sandbox / demo • **Spec:** ETSI TS 119 612 (TLv6) • **Last updated:** 2025-11-25
 
-This repository hosts the **FIDES Sandbox Trusted List** used in pilots around **organizational wallets** and **verifiable credentials**.  
-It follows **Trusted List v6 (TLv6)** structure from **ETSI TS 119 612** and intentionally demonstrates a **DID‑first SDI** variant for learning and interoperability testing.
+This repository hosts the **FIDES Sandbox List of Trusted Lists (LOTL)** and the **FIDES Sandbox Trusted List (TL)** used in pilots around **organizational wallets** and **verifiable credentials**.
+
+- The **TL** is **PKI-anchored**: `ServiceDigitalIdentity` contains **X.509** identifiers (leaf certificate and/or Subject Key Identifier).
+- The **LOTL** provides a **pointer** to the TL and includes the **X.509 identity** of the TL signer so clients can validate the TL signature chain.
+- Both documents follow **Trusted List v6 (TLv6)** from **ETSI TS 119 612** and are designed for interoperability testing in a sandbox context.
 
 ---
 
-## 🔗 Trust List
+## 🔗 Files / Endpoints
 
-- **Human-readable (GitHub):** `https://github.com/FIDEScommunity/fides-trust-list/FIDES-TL.xml`  
+### LOTL (List of Trusted Lists)
+- **Human-readable (GitHub):** `https://github.com/FIDEScommunity/fides-trust-list/FIDES-LOTL.xml`
+- **Machine-readable (raw):** `https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-LOTL.xml`
+
+### TL (Trusted List)
+- **Human-readable (GitHub):** `https://github.com/FIDEScommunity/fides-trust-list/FIDES-TL.xml`
 - **Machine-readable (raw):** `https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml`
 
-> Consumers should prefer the **raw** URL when programmatically downloading the TL XML.
+> Relying parties SHOULD use the **raw** URLs for programmatic download and caching.
 
 ---
 
 ## 📘 About (modeled after EWC)
 
-Inspired by the structure of the **EWC Trust List**, this repo includes:
-- A single **`FIDES-TL.xml`** file maintained via PRs.
-- Simple **onboarding instructions** for issuers/services to be added.
-- A clear statement of **service types** and **policy/rules** references.
-
-This FIDES Sandbox focuses on **EAA (issuance of electronic attestations of attributes)** services related to **organizational wallets**. The sandbox deliberately includes **DID-only SDI** to show how a DID can serve as a stable identifier alongside—or in place of—X.509 in experimental setups.
+Inspired by the **EWC Trust List** structure, this repo contains:
+- A **LOTL** (`FIDES-LOTL.xml`) with a pointer to the FIDES TL.
+- A **TL** (`FIDES-TL.xml`) listing **EAA** services (issuance of electronic attestations of attributes).
+- Clear **scheme rules**, **onboarding instructions**, and **validation guidance**.
+- XAdES guidance for **signing** both LOTL and TL with the **FIDES sandbox QSeal**.
 
 ---
 
@@ -32,73 +39,126 @@ This FIDES Sandbox focuses on **EAA (issuance of electronic attestations of attr
 - **EAA (Issuance of electronic attestations of attributes)**  
   URI: `http://uri.etsi.org/TrstSvc/Svctype/EAA`
 
-> In production ecosystems, EAA services are commonly **PKI-anchored** (SDI contains **X.509**). In this sandbox we also publish an **experimental DID-only SDI** to illustrate a DID-first trust anchor.
+---
+
+## 🧪 What’s different in this sandbox?
+
+- The **TL SDI** uses **X.509** anchors: at least one of
+  - `<X509Certificate>`: base64 of DER **leaf** certificate (1 line, no headers), and/or
+  - `<X509SKI>`: base64 of the **Subject Key Identifier** (20-byte value) from the leaf cert.
+- The **LOTL**’s pointer to the TL includes the **TL signer certificate** in its `ServiceDigitalIdentities` to let clients establish trust in the TL signature.
+- Optional **DID** references can be provided as informational links (e.g., issuer metadata) but are **not** used for trust anchoring in this PKI-first profile.
 
 ---
 
-## 🧪 Sandbox Deviations (read me!)
+## 📝 What you’ll find in `FIDES-TL.xml` (TL)
 
-This sandbox TL intentionally demonstrates the following **deviation** from common practice:
-
-- **SDI as DID-only (experimental):**  
-  Services include `<ServiceDigitalIdentity><DigitalId><Other><URI>did:web:…</URI></Other></DigitalId></ServiceDigitalIdentity>` instead of X.509.  
-  This helps demonstrate **stable identifiers** across key rotations and improves **developer experience** for DID‑aware tools.
-
-**Implications:** Some TLv6 clients and validators may **expect X.509 in SDI** for EAA services. Treat this TL as **educational/demo material**.
+- **SchemeTypeCommunityRules / PolicyOrLegalNotice (TSLPolicy):** links to these README sections.
+- **SchemeTerritory:** `NL` (preferred for validator compatibility).
+- **DistributionPoints:** GitHub and **raw** URL.
+- **TSLSequenceNumber / ListIssueDateTime / NextUpdate:** versioning & refresh policy.
+- **ServiceDigitalIdentity (SDI):** **X.509** anchors (`X509Certificate` and/or `X509SKI`).
+- **ServiceInformationExtensions:** optional pointers to issuer metadata (e.g., OIDC/OID4VCI endpoint or DID page).
+- **Signature:** to be **XAdES (enveloped)** over the `TrustServiceStatusList` element with the **FIDES sandbox QSeal**.
 
 ---
 
-## 📝 Scheme information you will find in `FIDES-TL.xml`
+## 🧭 Scheme Rules
 
-- **SchemeTypeCommunityRules:** link to rules explaining scope, DID‑binding, key‑match rule (e.g., SPKI‑SHA256), release cadence.
-- **PolicyOrLegalNotice/TSLPolicy:** legal/policy page.
-- **SchemeTerritory:** typically `NL` (country code) for best validator compatibility.
-- **DistributionPoints:** includes both GitHub and raw URLs.
-- **TSLSequenceNumber / ListIssueDateTime / NextUpdate:** versioning and refresh policy.
-- **Signature:** to be signed as **XAdES (enveloped)** over the `TrustServiceStatusList` element (exclusive c14n) with the **FIDES sandbox eSeal**.
+> How relying parties should interpret and use the **FIDES Sandbox LOTL & TL (TLv6)**.  
+> This sandbox is **not** an official national TL/LOTL. Consumers must explicitly **opt-in** to trust it.
 
-> The current file may be unsigned while under active editing. Before publication, ensure the TL is **XAdES-signed**.
+### 1) Purpose & Scope
+- **Scope:** pilots around organizational wallets & verifiable credentials.
+- **Audience:** developers and relying parties experimenting with TLv6 consumption.
+- **Trust model:** **PKI-first**. TL SDI contains **X.509** identifiers (leaf cert and/or SKI). DID references are optional and informative only.
+
+### 2) Identification & SDI Policy (TL)
+- `ServiceDigitalIdentity` MUST contain at least:
+  - `<X509Certificate>` (base64 DER of the **leaf** used to sign credentials) **or**
+  - `<X509SKI>` (base64 of the **Subject Key Identifier** from that leaf).
+- MAY additionally contain:
+  - intermediate chain certificates as extra `<DigitalId>` entries,
+  - `<X509SubjectName>`,
+  - informational links (e.g., DID, issuer metadata) in `ServiceInformationExtensions`.
+
+### 3) Matching Rules (verifier)
+A verifier MUST anchor the signer of a credential to a **granted** TL service by matching the credential’s **leaf certificate** (from `x5c[0]`) to the TL SDI via **one** of:
+
+1. **Exact certificate match:** credential’s leaf DER equals `<X509Certificate>` (byte-equal after base64 decode).  
+2. **SKI match:** credential’s leaf **SKI** (RFC 5280 §4.2.1.2) equals `<X509SKI>` (base64).  
+3. *(Optional)* **SPKI hash equivalence:** if published as an additional rule in `ServiceInformationExtensions`.
+
+Additional policy checks (recommended):
+- Certificate time validity, optional revocation (OCSP/CRL) if configured in the sandbox.
+- Service **status** semantics: `granted`, `undersupervision` (warn), `withdrawn` (reject new artefacts).
+
+### 4) LOTL Pointers
+- The LOTL (`FIDES-LOTL.xml`) contains a pointer to the TL with the **TL signer identity** (`X509Certificate`), the **TSLLocation** (raw URL), MIME type, and additional descriptive fields.
+- Clients SHOULD use the LOTL to discover & validate the TL, then use the TL to validate services.
+
+### 5) Versioning & Updates
+- **TSLSequenceNumber:** +1 on each change (both LOTL & TL).
+- **ListIssueDateTime:** issuance time (UTC, ISO 8601 with `Z`).
+- **NextUpdate:** typically **+30 days**; emergency updates may occur sooner.
+- **Caching:** consumers SHOULD respect HTTP caching; MUST re-fetch if `ETag`/`Last-Modified` changes before `NextUpdate`.
+
+### 6) Distribution
+- Preferred machine URLs (raw):
+  - LOTL: `https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-LOTL.xml`
+  - TL:   `https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml`
+
+### 7) Signature
+- Both LOTL and TL SHOULD be signed as **XAdES (enveloped)** over the `TrustServiceStatusList` element using the **FIDES sandbox QSeal**.
+- Canonicalization: **exclusive c14n** (without comments).
+- Include **KeyInfo** with **leaf + intermediate(s)**.
 
 ---
 
 ## 🚀 Onboarding / requesting changes
 
-Open a **Pull Request** with the following minimum information:
-
+### A) Add or modify a TL service (TSP)
+Open a **Pull Request** including:
 1. **TSP (issuer) name & website**  
-2. **ServiceTypeIdentifier & ServiceName**  
-3. **ServiceDigitalIdentity (SDI)**  
-   - **DID-only SDI (sandbox):** your `did:web` (and `#key` if needed)   
-4. **ServiceInformationExtensions (optional but recommended):**  
-   - DID-binding URIs (e.g., `https://fides.community/tl/asi/did-binding#did`, `#vm`, `#match=spkiSha256`)  
-   - Any profile/schema references for your credential types  
-5. **Status/StartingTime** and contact email for change notifications.
+2. **ServiceTypeIdentifier** (`EAA`) & **ServiceName**  
+3. **ServiceDigitalIdentity (SDI)**:  
+   - `<X509Certificate>` (base64 DER of the **leaf** used to sign credentials), and/or  
+   - `<X509SKI>` (base64 of the leaf’s SKI)  
+   - *(optional)* intermediates, subject name  
+4. **ServiceInformationExtensions** (optional): issuer metadata, profile links, etc.  
+5. **ServiceStatus** and **StatusStartingTime** (UTC), contact email for change notifications.
 
-> Every merge **must** bump `TSLSequenceNumber` and refresh `ListIssueDateTime` / `NextUpdate`.
+> Every merge MUST bump `TSLSequenceNumber` and refresh `ListIssueDateTime` / `NextUpdate`.
+
+### B) Update LOTL pointer
+For the LOTL, provide:
+- `X509Certificate` of the **TL signer** (leaf),  
+- `TSLLocation` (raw TL URL),  
+- and any optional additional information (scheme name/territory, rules, etc.).
 
 ---
 
 ## ✅ Validation (suggested)
 
-- **XML schema & TLv6 structure** — validate against TLv6 (`TSLVersionIdentifier=6`)  
-- **Signature (XAdES)** — when signed, verify enveloped signature over root, exclusive c14n  
-- **SDI equivalence checks:**  
-  - For **DID SDI**: resolve `did:web`, compare public key (SPKI/JWK thumbprint) with declared binding rule
+- **XML schema & TLv6 structure:** `TSLVersionIdentifier=6`, `TSLTag`, required scheme fields present.
+- **Signature (XAdES):** verify enveloped signature over root, **exclusive c14n**.
+- **TL matching:** confirm that `x5c[0]` (leaf) from a test credential matches TL SDI via certificate or SKI.
 
-> Tools: **EU DSS** (supports TLv6), `xmlsec`, `openssl`, `xades4j`
+> Useful tools: **EU DSS** (sign/validate), `xmlsec`, `openssl`, `xades4j`.
 
 ---
 
-## 📄 Files
+## 📄 File list
 
-- `FIDES-TL.xml` — the Trusted List (TLv6).
+- `FIDES-LOTL.xml` — FIDES Sandbox List of Trusted Lists (pointers to TLs; currently the FIDES TL).
+- `FIDES-TL.xml` — FIDES Sandbox Trusted List (services and their X.509 identities).
 
 ---
 
 ## 🔐 Governance
 
 - **Releases:** PR + review → merge → bump `TSLSequenceNumber`  
-- **Publishing cadence:** `NextUpdate` typically set to **+30 days**  
+- **Publishing cadence:** typical **NextUpdate** = 30 days  
 - **Scope:** Sandbox/demo for organizational-wallet pilots  
 - **Contact:** info@fides.community
 
@@ -107,7 +167,7 @@ Open a **Pull Request** with the following minimum information:
 ## 📚 References
 
 - ETSI TS **119 612** (TLv6) — Trusted Lists  
-- EC **DSS** — TLv6 support and guidance  
+- EC **DSS** — signing & validation (XAdES)  
 - EWC Trust List — structure & onboarding inspiration
 
 ---
@@ -115,71 +175,3 @@ Open a **Pull Request** with the following minimum information:
 ## 📜 License
 
 Unless stated otherwise, content in this repo is provided under the **Apache-2.0** license.
-
----
-
-## 🧭 Scheme Rules
-
-> This section describes how relying parties should interpret and use the **FIDES Sandbox Trusted List (TLv6)**.
-> The sandbox is **not** an official national TL/LOTL derivative. Consumers must explicitly opt-in to trust it.
-
-### 1) Purpose & Scope
-- **Scope:** pilots around organizational wallets & verifiable credentials.
-- **Audience:** developers and relying parties experimenting with TLv6 consumption.
-- **Trust model:** **DID‑first**. Services use **DID‑only SDI** instead of X.509 to demonstrate a DID anchor.
-- **Out of scope:** production assurance or legal reliance; this list is educational/demo material.
-
-### 2) Identification & SDI Policy
-- **ServiceDigitalIdentity (SDI)** uses **`did:web` URIs** only.
-- The DID **MUST** resolve over HTTPS to a valid DID document.
-- The public key used by the issuer to sign artefacts **MUST** be present in the DID document’s `verificationMethod` and referenced via `assertionMethod`.
-- DID documents **SHOULD** expose keys as JWK (preferred) and **MAY** additionally include `x5c` if a certificate chain is published for interoperability.
-
-### 3) DID Binding & Key‑Match Rules
-Relying parties **MUST** verify that the key used to sign a credential/presentation **matches** the key referenced by the DID in the SDI.
-
-Accepted match strategies (any one is sufficient):
-1. **DID URL key reference**: the JOSE/COSE `kid` contains the DID URL of the key (e.g., `did:web:…#key-1`). The verifier resolves the DID and matches the key by id.
-2. **JWK thumbprint**: compute RFC 7638 thumbprint of the JWK from the artefact and compare to the JWK from the DID document.
-3. **SPKI hash** *(optional)*: compute SHA‑256 over SubjectPublicKeyInfo (SPKI) of the artefact’s public key and compare to the SPKI derived from the DID document’s key.
-4. **x5c leaf equivalence** *(optional)*: if the artefact provides `x5c`, compare the leaf certificate’s SPKI to the DID key (or the DID key’s `x5c` leaf when present).
-
-**Algorithms:** the sandbox focuses on **ES256 (P‑256)** and **EdDSA (Ed25519)**. Other algorithms may not be tested.
-
-### 4) Service Status Semantics
-- `granted` — service is active and trusted.
-- `undersupervision` — service is active but under investigation; relying parties **SHOULD warn**.
-- `withdrawn` — service is not trusted; relying parties **MUST reject** signatures from that service for new artefacts.
-- Status changes are recorded via **ServiceHistory** when applicable.
-
-### 5) Versioning & Updates
-- **TSLSequenceNumber**: increment by **+1** on each change.
-- **ListIssueDateTime**: set to issuance time (UTC, ISO‑8601 with `Z`).
-- **NextUpdate**: typically **+30 days**; emergency updates may occur sooner.
-- **Caching:** consumers **SHOULD** respect HTTP caching, but **MUST** re‑fetch if `ETag`/`Last‑Modified` changes before `NextUpdate`.
-
-### 6) Distribution
-- Preferred machine URL: `https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml`  
-- GitHub HTML view: `https://github.com/FIDEScommunity/fides-trust-list/FIDES-TL.xml`
-
-### 7) Signature
-- The TL **SHOULD** be signed as **XAdES (enveloped)** over the `TrustServiceStatusList` element using the **FIDES sandbox eSeal**.
-- Canonicalization: **exclusive c14n**.
-- While unsigned drafts may exist during editing, relying parties **SHOULD** prefer signed releases.
-
-### 8) Onboarding Requirements
-When requesting a new TSP/service entry via PR, provide:
-1. **TSP name** and contact URL.
-2. **ServiceTypeIdentifier** and **ServiceName**.
-3. **SDI DID**: `did:web:…` (and optional key id `#…`).
-4. **Optional**: `ServiceInformationExtensions` with DID‑binding URIs, credential profile links, or additional semantics.
-5. **ServiceStatus** and **StatusStartingTime** (UTC).
-
-### 9) Change & Incident Handling
-- **Key rotation**: update the DID document to point to the new key **and** submit a PR to reflect changes if service metadata changes.
-- **Compromise**: set status to `withdrawn` (or `undersupervision` while investigating) and document the incident in the PR/commit message.
-- **Backward validation**: relying parties MAY keep historical keys for validating artefacts issued before a withdrawal, per their own policy.
-
-### 10) Deviations & Compatibility Notes
-- This sandbox intentionally uses **DID‑only SDI** for EAA‑like services to showcase a DID‑first approach.
-- Some TL clients expect X.509 in SDI; such clients may not consume this list without adaptation.

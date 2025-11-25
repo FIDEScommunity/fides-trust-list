@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIDES Sandbox List of Trusted Lists (LOTL) — DRAFT -->
+<TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
+                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                        xmlns:tslx="http://uri.etsi.org/02231/v2/additionaltypes#"
+                        TSLTag="http://uri.etsi.org/19612/TSLTag">
+  <SchemeInformation>
+    <TSLVersionIdentifier>6</TSLVersionIdentifier>
+    <TSLSequenceNumber>1</TSLSequenceNumber>
+    <!-- Niet-EU list-of-lists -->
+    <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/NLlistofthelists</TSLType>
+
+    <SchemeOperatorName>
+      <Name xml:lang="en">FIDES Labs</Name>
+    </SchemeOperatorName>
+
+    <SchemeOperatorAddress>
+      <PostalAddresses>
+        <PostalAddress xml:lang="nl">
+          <StreetAddress>Vredenburg 40</StreetAddress>
+          <Locality>Utrecht</Locality>
+          <StateOrProvince>Utrecht</StateOrProvince>
+          <PostalCode>3511 BD</PostalCode>
+          <CountryName>NL</CountryName>
+        </PostalAddress>
+      </PostalAddresses>
+      <ElectronicAddress>
+        <URI xml:lang="en">mailto:info@fides.community</URI>
+        <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list</URI>
+      </ElectronicAddress>
+    </SchemeOperatorAddress>
+
+    <SchemeName>
+      <Name xml:lang="en">FIDES Sandbox List of Trusted Lists</Name>
+    </SchemeName>
+
+    <SchemeInformationURI>
+      <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list</URI>
+    </SchemeInformationURI>
+
+    <StatusDeterminationApproach>
+      http://uri.etsi.org/TrstSvc/TrustedList/StatusDetn/EUappropriate
+    </StatusDeterminationApproach>
+
+    <SchemeTypeCommunityRules>
+      <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list#scheme-rules</URI>
+    </SchemeTypeCommunityRules>
+
+    <SchemeTerritory>NL</SchemeTerritory>
+
+    <PolicyOrLegalNotice>
+      <TSLPolicy xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list#policy</TSLPolicy>
+    </PolicyOrLegalNotice>
+
+    <HistoricalInformationPeriod>24</HistoricalInformationPeriod>
+    <ListIssueDateTime>2025-11-13T06:00:00Z</ListIssueDateTime>
+    <NextUpdate>
+      <dateTime>2025-12-13T06:00:00Z</dateTime>
+    </NextUpdate>
+
+    <DistributionPoints>
+      <URI>https://github.com/FIDEScommunity/fides-trust-list/FIDES-LOTL.xml</URI>
+      <URI>https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-LOTL.xml</URI>
+    </DistributionPoints>
+
+    <!-- ===== Pointers to Member/Community TLs ===== -->
+    <PointersToOtherTSL>
+
+      <!-- NL → FIDES Sandbox TL -->
+      <OtherTSLPointer>
+        <ServiceDigitalIdentities>
+          <ServiceDigitalIdentity>
+            <DigitalId>
+              <X509Certificate>MIIHFDCCBPygAwIBAgIQAuUUVEXVXbPt5UQH6G2NkjANBgkqhkiG9w0BAQsFADByMS8wLQYDVQQDEyZURVNUIERpZ2lkZW50aXR5IEJ1c2luZXNzIFF1YWxpZmllZCBDQTEXMBUGA1UEYRMOTlRSTkwtMjczMjI2MzExGTAXBgNVBAoTEERpZ2lkZW50aXR5IEIuVi4xCzAJBgNVBAYTAk5MMB4XDTI1MTAyMzA5MjIwNVoXDTI2MTAyMzA5MjIwNFowWjEYMBYGA1UEAxMPRklERVMgTGFicyBCLlYuMRcwFQYDVQRhEw5OVFJOTC05NzE1OTE3NDEYMBYGA1UEChMPRklERVMgTGFicyBCLlYuMQswCQYDVQQGEwJOTDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL2eI+v9WGDyC9+Uq4lgyxcUVC+e42OSHyVKJ2TTFDAXfB5oLG5xxO+BdxiuLecueakNTWEKWQgEPev5bViVWEmYWrF+e+lCks7C9ozUSj/4O0domYn/oIvOJAeQFY8tswRtVTELKISsRpRlS1JGcsXWRk/lmmwdkz4bOuKVkF/Pm08cxkqpl89A7fDuYe9nZiZc1a15A02X3emMNPWJWH0MEQDHv8wbe6O1oaDxn/i1jq/U/PY6VxhR2SzI4ZHuNiUMJM5PnR8pB3CeQYB9TVxM9t60OJHVzHqxh4yMJfI7tY2W4Azw6gfSYspCSlXg0PGDoXo74a6tfGqfEtWykV8CAwEAAaOCArwwggK4MB8GA1UdIwQYMBaAFDmOU2G7fFI6G0sEgS0jbynVxwAEMIG3BggrBgEFBQcBAQSBqjCBpzBrBggrBgEFBQcwAoZfaHR0cDovL2NlcnRpZmljYXRlcy5zc2NkLnByZXByb2QuZGlnaWRlbnRpdHktcGtpLmNvbS9URVNULURpZ2lkZW50aXR5LUJ1c2luZXNzLVF1YWxpZmllZC1DQS5jZXIwOAYIKwYBBQUHMAGGLGh0dHA6Ly9vY3NwLnNzY2QucHJlcHJvZC5kaWdpZGVudGl0eS1wa2kuY29tMIGqBgNVHSAEgaIwgZ8wDQYLKwYBBAGCjScDAgMwCAYGBACPegECMIGDBgcEAIvsQAEDMHgwSQYIKwYBBQUHAgIwPQw7Rm9yIHRoZSB1c2Ugb2YgdGhpcyBjZXJ0aWZpY2F0ZSB0aGUgYXNzb2NpYXRlZCBDUFMgYXBwbGllcy4wKwYIKwYBBQUHAgEWH2h0dHBzOi8vY3BzLmRpZ2lkZW50aXR5LXBraS5jb20wKgYDVR0lBCMwIQYKKwYBBAGCNwoDDAYJKoZIhvcvAQEFBggrBgEFBQcDJDBqBggrBgEFBQcBAwReMFwwCAYGBACORgEBMAgGBgQAjkYBBDATBgYEAI5GAQYwCQYHBACORgEGAjAxBgYEAI5GAQUwJzAlFh9odHRwczovL2Nwcy5kaWdpZGVudGl0eS1wa2kuY29tEwJlbjBnBgNVHR8EYDBeMFygWqBYhlZodHRwOi8vY3JsLnNzY2QucHJlcHJvZC5kaWdpZGVudGl0eS1wa2kuY29tL1RFU1QtRGlnaWRlbnRpdHktQnVzaW5lc3MtUXVhbGlmaWVkLUNBLmNybDAdBgNVHQ4EFgQUPG9XbVPGqR26v6t6AiPO2hJIBNEwDgYDVR0PAQH/BAQDAgZAMA0GCSqGSIb3DQEBCwUAA4ICAQBYb735K//qv4qFmbemTjOMtPFZmWrOT6jy8nCw6vuLWI31KFC72e83ObyIPpInUK+THm6fdf6EscUQ+i0S4omQO9JLkANFUuBbYR+NEDgPfFfGWWGwgHSRvYDy2dENI1ZHp26Cdx/t6r0qlLzcKAXWXGCC9yl2GbdymUt3GYzlnYLOy+MRyw1Ej66RbKSxbw7piBKwYIKpRByoCmldcPW8+/tPEdhjq2nc3xOtH61KmdR/T/rNY9A7kvwV9U6ChDvFwKTO+g6xKGyhxdbcyEdOmBY1JUvX9udxOw+15B9lmyxaf25OC2XIdneGVyv6HKlTc1DiLQ/D2MFz/CO9mBRPcxzCVV6v/hZMKud6CqKQ0xqcNdSrECeSjLttq/v9bNooUPLtgR7hLz2g+yoPylbqCq1Qjv0G5417apVYspSX4RnSZnz0UxI6L94vB5+8qi48mK05o2ABKjNyJN1TyhGNdJenjBbdF0VL8+yJQpMisFUlIGemtal3+bDMIshb6XeUfZzeDOisLrfmgPqkiZlWQHVfD5YVF78C9lWv2nKW2ywtK0OFqQWZj7mXfx3QBQ7SjOfVZwyUSrWVQ+ksBqxYsHIIeNucQ1T0rMx42l7yd4P5v373CW6pErGWt6f+SOwGkB7JKUkSVNH/A0EL+RN34Rdx9a4q24xlQQWSU+MgMg==
+              </X509Certificate>
+            </DigitalId>
+          </ServiceDigitalIdentity>
+        </ServiceDigitalIdentities>
+
+        <TSLLocation>
+          https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml
+        </TSLLocation>
+
+        <MimeType>application/vnd.etsi.tsl+xml</MimeType>
+
+        <AdditionalInformation>
+          <OtherInformation>
+            <tslx:TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</tslx:TSLType>
+          </OtherInformation>
+          <OtherInformation>
+            <tslx:SchemeOperatorName>
+              <Name xml:lang="en">FIDES Labs</Name>
+            </tslx:SchemeOperatorName>
+          </OtherInformation>
+          <OtherInformation>
+            <tslx:SchemeTypeCommunityRules>
+              <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list#scheme-rules</URI>
+            </tslx:SchemeTypeCommunityRules>
+          </OtherInformation>
+          <OtherInformation>
+            <tslx:SchemeTerritory>NL</tslx:SchemeTerritory>
+          </OtherInformation>
+          <OtherInformation>
+            <tslx:SchemeInformationURI>
+              <URI xml:lang="en">https://github.com/FIDEScommunity/fides-trust-list</URI>
+              <URI xml:lang="en">https://raw.githubusercontent.com/FIDEScommunity/fides-trust-list/main/FIDES-TL.xml</URI>
+            </tslx:SchemeInformationURI>
+          </OtherInformation>
+          <OtherInformation>
+            <tslx:StatusDeterminationApproach>
+              http://uri.etsi.org/TrstSvc/TrustedList/StatusDetn/EUappropriate
+            </tslx:StatusDeterminationApproach>
+          </OtherInformation>
+        </AdditionalInformation>
+      </OtherTSLPointer>
+
+    </PointersToOtherTSL>
+  </SchemeInformation>
+
+  <!-- TODO: Voeg XAdES enveloped ds:Signature toe met het FIDES LOTL eSeal -->
+</TrustServiceStatusList>

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  FIDES Open Sandbox Trust List (TLv6 skeleton) - FIRST DRAFT
-
-  Notes:
-  - ServiceDigitalIdentity (SDI) uses DID-only for demo purposes:
-      <ServiceDigitalIdentity><DigitalId><Other><URI>did:web:...</URI></Other></DigitalId></ServiceDigitalIdentity>
-    This is an experimental choice to demonstrate DID binding. For maximum interoperability with TLv6 consumers,
-    consider publishing a PKI-anchored variant (SDI=X.509) alongside this sandbox list.
-  - Sign this XML with XAdES enveloped signature (ds:Signature) using the FIDES (test) eSeal for the Scheme Operator.
+  FIDES Open Sandbox Trust List (TLv6 skeleton) - SECOND DRAFT
 -->
 <TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
                         xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
                         TSLTag="http://uri.etsi.org/19612/TSLTag">
   <SchemeInformation>
     <TSLVersionIdentifier>6</TSLVersionIdentifier>
-    <TSLSequenceNumber>2</TSLSequenceNumber>
+    <TSLSequenceNumber>3</TSLSequenceNumber>
     <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
     <SchemeOperatorName>
       <Name xml:lang="en">FIDES Labs</Name>
@@ -90,133 +83,27 @@
 
       <TSPServices>
 
-        <!-- Service 1: PID -->
         <TSPService>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
             <ServiceName>
-              <Name xml:lang="en">FIDES Sandbox PID</Name>
+              <Name xml:lang="en">FIDES Sandbox (Q)EAA</Name>
             </ServiceName>
             <ServiceDigitalIdentity>
               <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
+                <<X509Certificate>>
+                  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
+                </<X509Certificate>>
+              </DigitalId>
+              <DigitalId>
+                <X509SubjectName>CN=FIDES Labs B.V., O=FIDES Labs B.V., OID.2.5.4.97=NTRNL-97159174, C=NL</X509SubjectName>
+              </DigitalId>
+              <DigitalId>
+                <X509SKI>PG9XbVPGqR26v6t6AiPO2hJIBNE=</X509SKI>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <!-- Link to the issuer metadata and credential key (informative) -->
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#PID</URI>
-                </AdditionalServiceInformation>
-                <!-- Optional semantic identifier for the VCT -->
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:PID</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 2: LPID -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">FIDES Sandbox LPID</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#LPID</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:LPID</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 3: IBAN -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">FIDES Sandbox IBAN</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#IBAN</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:IBAN</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 4: VAT -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">FIDES Sandbox VAT</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#VAT</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:VAT</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
           </ServiceInformation>
         </TSPService>
 
@@ -253,99 +140,27 @@
 
       <TSPServices>
 
-        <!-- Service 1: LPID -->
         <TSPService>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
             <ServiceName>
-              <Name xml:lang="en">KVK Sandbox LPID</Name>
+              <Name xml:lang="en">KVK Sandbox (Q)EAA</Name>
             </ServiceName>
             <ServiceDigitalIdentity>
               <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:mijnkvk.acc.credenco.com:did:df63abc0-2cc9-49e5-b3f8-42a824ceb9a7</URI>
-                </Other>
+                <<X509Certificate>>
+                  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
+                </<X509Certificate>>
+              </DigitalId>
+              <DigitalId>
+                <X509SubjectName>CN=Kamer van Koophandel, O=Kamer van Koophandel, OID.2.5.4.97=NTRNL-59581883, C=NL</X509SubjectName>
+              </DigitalId>
+              <DigitalId>
+                <X509SKI>VSBmQsJvu0mv3E8tNTx7nzHettE=</X509SKI>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/df803dd4-32c6-4a69-afe5-d807c6701ed7/company/.well-known/openid-credential-issuer#LPID</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:LPID</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 2: VerifiedGreenLane -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">KVK Sandbox VerifiedGreenLane</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:mijnkvk.acc.credenco.com:did:df63abc0-2cc9-49e5-b3f8-42a824ceb9a7</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/df803dd4-32c6-4a69-afe5-d807c6701ed7/company/.well-known/openid-credential-issuer#VerifiedGreenLane</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:VerifiedGreenLane</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 3: RecordOfDirectorships -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">KVK Sandbox RecordOfDirectorships</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:mijnkvk.acc.credenco.com:did:df63abc0-2cc9-49e5-b3f8-42a824ceb9a7</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/df803dd4-32c6-4a69-afe5-d807c6701ed7/company/.well-known/openid-credential-issuer#RecordOfDirectorships</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:RecordOfDirectorships</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
           </ServiceInformation>
         </TSPService>
 
@@ -382,35 +197,27 @@
 
       <TSPServices>
 
-        <!-- Service 1: VAT -->
         <TSPService>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
             <ServiceName>
-              <Name xml:lang="en">Belastingdienst Sandbox VAT</Name>
+              <Name xml:lang="en">Belastingdienst Sandbox (Q)EAA</Name>
             </ServiceName>
             <ServiceDigitalIdentity>
               <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:did:bd064799-e498-4020-a427-1c50710d2ac0</URI>
-                </Other>
+                <<X509Certificate>>
+
+                </<X509Certificate>>
+              </DigitalId>
+              <DigitalId>
+                <X509SubjectName></X509SubjectName>
+              </DigitalId>
+              <DigitalId>
+                <X509SKI></X509SKI>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/e860234b-d60a-453d-a11e-c87a38583c15/Belastingdienst/.well-known/openid-credential-issuer#VAT</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:VAT</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
           </ServiceInformation>
         </TSPService>
 
@@ -447,35 +254,27 @@
 
       <TSPServices>
 
-        <!-- Service 1: IBAN -->
         <TSPService>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
             <ServiceName>
-              <Name xml:lang="en">Tulip Bank Sandbox IBAN</Name>
+              <Name xml:lang="en">TulipBank Sandbox (Q)EAA</Name>
             </ServiceName>
             <ServiceDigitalIdentity>
               <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:did:24b7fc6e-7bea-4519-a23e-63c4e5a0b21e</URI>
-                </Other>
+                <<X509Certificate>>
+
+                </<X509Certificate>>
+              </DigitalId>
+              <DigitalId>
+                <X509SubjectName></X509SubjectName>
+              </DigitalId>
+              <DigitalId>
+                <X509SKI></X509SKI>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a396df10-6645-44c3-9209-1f4e227cd35e/bankv4/.well-known/openid-credential-issuer#IBAN</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:IBAN</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
           </ServiceInformation>
         </TSPService>
 
@@ -512,203 +311,33 @@
 
       <TSPServices>
 
-        <!-- Service 1: ContactDetails -->
         <TSPService>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
             <ServiceName>
-              <Name xml:lang="en">MijnOverheid Sandbox ContactDetails</Name>
+              <Name xml:lang="en">MijnOverheid Sandbox (Q)EAA</Name>
             </ServiceName>
             <ServiceDigitalIdentity>
               <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:did:31da4d04-c879-4d1d-bf3b-54f003882b22</URI>
-                </Other>
+                <<X509Certificate>>
+                  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
+                </<X509Certificate>>
+              </DigitalId>
+              <DigitalId>
+                <X509SubjectName>CN=Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, O=Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, OID.2.5.4.97=NTRNL-50200097, C=NL</X509SubjectName>
+              </DigitalId>
+              <DigitalId>
+                <X509SKI>Kl64M3jSCdvHW4GmO2ysNVL6EqU=</X509SKI>
               </DigitalId>
             </ServiceDigitalIdentity>
             <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
             <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <!-- Link to the issuer metadata and credential key (informative) -->
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#ContactDetails</URI>
-                </AdditionalServiceInformation>
-                <!-- Optional semantic identifier for the VCT -->
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:ContactDetails</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 2: BRPAddressCredential -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">MijnOverheid Sandbox BRPAddressCredential</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRPAddressCredential</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:BRPAddressCredential</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 3: BRIIncomeCredential -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">MijnOverheid Sandbox BRIIncomeCredential</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:wallet.acc.credenco.com:public:a860157d-64d2-434f-9288-04f5b4d2b9dc:MijnOverheidIssuer</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/a860157d-64d2-434f-9288-04f5b4d2b9dc/MijnOverheidIssuer/.well-known/openid-credential-issuer#BRIIncomeCredential</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:BRIIncomeCredential</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
           </ServiceInformation>
         </TSPService>
 
       </TSPServices>
     </TrustServiceProvider>
 
-    <!-- Provider 6: Banqup -->
-    <TrustServiceProvider>
-      <TSPInformation>
-        <TSPName>
-          <Name xml:lang="en">Banqup</Name>
-        </TSPName>
-        <TSPTradeName>
-          <Name xml:lang="en">Banqup</Name>
-        </TSPTradeName>
-        <TSPAddress>
-          <PostalAddresses>
-            <PostalAddress xml:lang="en">
-              <StreetAddress>Albert Einsteinweg 4</StreetAddress>
-              <Locality>Lelystad</Locality>
-              <StateOrProvince>Flevoland</StateOrProvince>
-              <PostalCode>8218 NH</PostalCode>
-              <CountryName>NL</CountryName>
-            </PostalAddress>
-          </PostalAddresses>
-          <ElectronicAddress>
-            <URI xml:lang="en">mailto:support@banqup.nl</URI>
-          </ElectronicAddress>
-        </TSPAddress>
-        <TSPInformationURI>
-          <URI xml:lang="en">https://www.banqup.nl/nl/</URI>
-        </TSPInformationURI>
-      </TSPInformation>
-
-      <TSPServices>
-
-        <!-- Service 1: IBAN -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">Banqup Sandbox IBAN</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#IBAN</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:IBAN</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-        <!-- Service 2: AccountStatement -->
-        <TSPService>
-          <ServiceInformation>
-            <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/EAA</ServiceTypeIdentifier>
-            <ServiceName>
-              <Name xml:lang="en">Banqup Sandbox AccountStatement</Name>
-            </ServiceName>
-            <ServiceDigitalIdentity>
-              <DigitalId>
-                <Other>
-                  <URI xml:lang="en">did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c</URI>
-                </Other>
-              </DigitalId>
-            </ServiceDigitalIdentity>
-            <ServiceStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceStatus>
-            <StatusStartingTime>2025-10-20T09:56:20Z</StatusStartingTime>
-            <ServiceInformationExtensions>
-              <Extension Critical="true">
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/SvcInfoExt/ForeSeals</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">https://wallet.acc.credenco.com/public/5ebe0351-f7a3-46dc-97e8-fdb356fb6f5b/Organization/.well-known/openid-credential-issuer#AccountStatement</URI>
-                </AdditionalServiceInformation>
-                <AdditionalServiceInformation>
-                  <URI xml:lang="en">urn:vct:AccountStatement</URI>
-                </AdditionalServiceInformation>
-              </Extension>
-            </ServiceInformationExtensions>
-          </ServiceInformation>
-        </TSPService>
-
-      </TSPServices>
-    </TrustServiceProvider>
 
   </TrustServiceProviderList>
 
