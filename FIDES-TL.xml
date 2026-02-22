@@ -340,6 +340,4 @@
 
 
   </TrustServiceProviderList>
-
-  <!-- TODO: Add XAdES enveloped signature here (ds:Signature) -->
 </TrustServiceStatusList>
