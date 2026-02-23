@@ -2,7 +2,7 @@
 
 > **Status:** Sandbox / demo • **Spec:** ETSI TS 119 612 (TLv6) • **Last updated:** 2025-11-25
 
-This repository hosts the **FIDES Sandbox List of Trusted Lists (LOTL)** and the **FIDES Sandbox Trusted List (TL)** used in pilots around **organizational wallets** and **verifiable credentials**.
+This repository hosts the **FIDES Sandbox List of Trusted Lists (LOTL)** and the **FIDES Sandbox Trusted List (TL)** used in pilots around **business wallets** and **verifiable credentials**.
 
 - The **TL** is **PKI-anchored**: `ServiceDigitalIdentity` contains **X.509** identifiers (leaf certificate and/or Subject Key Identifier).
 - The **LOTL** provides a **pointer** to the TL and includes the **X.509 identity** of the TL signer so clients can validate the TL signature chain.
