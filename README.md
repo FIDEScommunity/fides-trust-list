@@ -30,7 +30,7 @@ Inspired by the **EWC Trust List** structure, this repo contains:
 - A **LOTL** (`FIDES-LOTL.xml`) with a pointer to the FIDES TL.
 - A **TL** (`FIDES-TL.xml`) listing **EAA** services (issuance of electronic attestations of attributes).
 - Clear **scheme rules**, **onboarding instructions**, and **validation guidance**.
-- XAdES guidance for **signing** both LOTL and TL with the **FIDES sandbox QSeal**.
+- XAdES guidance for **signing** both LOTL and TL with the **FIDES sandbox QSeal** issued by Digidentity (QTSP).
 
 ---
 
