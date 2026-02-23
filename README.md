@@ -69,7 +69,7 @@ Inspired by the **EWC Trust List** structure, this repo contains:
 > This sandbox is **not** an official national TL/LOTL. Consumers must explicitly **opt-in** to trust it.
 
 ### 1) Purpose & Scope
-- **Scope:** pilots around organizational wallets & verifiable credentials.
+- **Scope:** pilots around business wallets, personal wallets & verifiable credentials.
 - **Audience:** developers and relying parties experimenting with TLv6 consumption.
 - **Trust model:** **PKI-first**. TL SDI contains **X.509** identifiers (leaf cert and/or SKI). DID references are optional and informative only.
 
